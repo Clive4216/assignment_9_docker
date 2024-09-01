@@ -5,14 +5,16 @@ pipeline {
         stage('Build docker image') {
             steps {
                 scripts {
-                    bat "docker build -t Clive4216/assignment_9_docker ."
+                    bat "docker build -t shubham7211/dock ."
                 }
             }
         }
       stage('Build & run docker container') {
           steps {
                 scripts {
-                    bat "docker run -d --name my-container Clive4216/assignment_9_docker"
+                    bat "docker rm -f my-app-container || exit 0"
+                    
+                    bat "docker run -d --name my-app-container shubham7211/dock"
                 }
           }
       }
